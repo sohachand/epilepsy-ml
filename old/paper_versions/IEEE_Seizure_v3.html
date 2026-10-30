@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+@page {
+  size: A4;
+  margin-top: 19mm;
+  margin-bottom: 43mm;
+  margin-left: 14.32mm;
+  margin-right: 14.32mm;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 10pt;
+  color: #000;
+  background: #fff;
+}
+
+/* ── TITLE ── */
+.paper-title {
+  font-size: 24pt;
+  font-weight: normal;
+  text-align: center;
+  line-height: 1.25;
+  margin-bottom: 10pt;
+}
+
+/* ── AUTHOR TABLE ── */
+.author-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 8pt;
+}
+.author-table td {
+  width: 33.33%;
+  text-align: center;
+  vertical-align: top;
+  padding: 4pt 6pt;
+  border: 0.75pt solid #000;
+  font-size: 10pt;
+  line-height: 1.4;
+}
+.author-name {
+  font-size: 11pt;
+  font-weight: normal;
+  display: block;
+  margin-bottom: 2pt;
+}
+.author-detail {
+  font-style: italic;
+  font-size: 10pt;
+  display: block;
+}
+
+/* ── TWO COLUMN BODY ── */
+.body-columns {
+  column-count: 2;
+  column-gap: 4.22mm;
+  text-align: justify;
+}
+
+/* ── ABSTRACT / KEYWORDS ── */
+.abstract-para {
+  font-size: 9pt;
+  line-height: 1.35;
+  margin-bottom: 5pt;
+}
+.abstract-bold { font-weight: bold; }
+.kw-italic { font-style: italic; }
+
+/* ── SECTION HEADINGS ── */
+.sec-heading {
+  font-size: 10pt;
+  font-variant: small-caps;
+  text-align: center;
+  font-weight: normal;
+  margin-top: 10pt;
+  margin-bottom: 4pt;
+  letter-spacing: 0.03em;
+}
+.sub-heading {
+  font-size: 10pt;
+  font-style: italic;
+  font-weight: normal;
+  text-align: left;
+  margin-top: 7pt;
+  margin-bottom: 2pt;
+}
+
+/* ── BODY PARAGRAPHS ── */
+p.bp {
+  font-size: 10pt;
+  line-height: 1.35;
+  text-indent: 0.25in;
+  margin: 0;
+}
+
+/* ── TABLES ── */
+.tbl-wrap { margin: 6pt 0; break-inside: avoid; }
+.tbl-cap {
+  font-size: 8pt;
+  font-variant: small-caps;
+  text-align: center;
+  margin-bottom: 2pt;
+}
+table.rt {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 9pt;
+}
+table.rt th {
+  background: #1F3864;
+  color: #fff;
+  border: 0.75pt solid #000;
+  padding: 3pt 4pt;
+  text-align: center;
+  font-weight: bold;
+}
+table.rt td {
+  border: 0.75pt solid #000;
+  padding: 3pt 4pt;
+  text-align: center;
+}
+
+/* ── REFERENCES ── */
+.ref-heading {
+  font-size: 10pt;
+  font-variant: small-caps;
+  text-align: center;
+  font-weight: normal;
+  margin-top: 10pt;
+  margin-bottom: 4pt;
+}
+p.ref {
+  font-size: 8pt;
+  line-height: 1.3;
+  padding-left: 16pt;
+  text-indent: -16pt;
+  margin-bottom: 2pt;
+  text-align: justify;
+}
+</style>
+</head>
+<body>
+
+<!-- TITLE -->
+<div class="paper-title">
+  Epileptic Seizure Detection Using Machine Learning:<br>
+  A Comparative Study of Class Imbalance Handling Techniques
+</div>
+
+<!-- AUTHOR TABLE — each author in own column, matching reference format -->
+<table class="author-table">
+  <tr>
+    <td>
+      <span class="author-name">Soha Chand (I007)</span>
+      <span class="author-detail">Dept. of Artificial Intelligence Engineering</span>
+      <span class="author-detail">Mukesh Patel School of Technology</span>
+      <span class="author-detail">Management &amp; Engineering, SVKM&rsquo;s NMIMS</span>
+      <span class="author-detail">soha.chand36@nmims.in</span>
+    </td>
+    <td>
+      <span class="author-name">Atharv Dixit (I013)</span>
+      <span class="author-detail">Dept. of Artificial Intelligence Engineering</span>
+      <span class="author-detail">Mukesh Patel School of Technology</span>
+      <span class="author-detail">Management &amp; Engineering, SVKM&rsquo;s NMIMS</span>
+      <span class="author-detail">atharv.dixit69@nmims.in</span>
+    </td>
+    <td>
+      <span class="author-name">Hima Deepthi Vankayalapati</span>
+      <span class="author-detail">Dept. of Artificial Intelligence Engineering</span>
+      <span class="author-detail">Mukesh Patel School of Technology</span>
+      <span class="author-detail">Management &amp; Engineering, SVKM&rsquo;s NMIMS</span>
+      <span class="author-detail">himadeepthi.vankayalapati@nmims.in</span>
+    </td>
+  </tr>
+</table>
+
+<!-- TWO COLUMN BODY -->
+<div class="body-columns">
+
+  <!-- ABSTRACT -->
+  <p class="abstract-para">
+    <span class="abstract-bold">Abstract&mdash;</span>Epilepsy
+    is a prevalent neurological disorder affecting over 50 million individuals
+    worldwide, characterized by recurrent seizures arising from abnormal
+    electrical brain activity. Automated detection from electroencephalogram
+    (EEG) signals is essential for timely clinical intervention but is severely
+    challenged by extreme class imbalance, with seizure events comprising less
+    than 2% of continuous EEG recordings. This study presents a systematic
+    comparison of five class imbalance handling strategies on the CHB-MIT Scalp
+    EEG Database. Eight statistical features are extracted from 2-second windows
+    across 23 EEG channels, yielding 184-dimensional feature vectors compressed
+    using Principal Component Analysis (PCA) retaining 120 components. Techniques
+    evaluated include Baseline Random Forest, SMOTE with controlled sampling
+    ratio, Balanced Random Forest, SMOTETomek, and XGBoost with
+    scale_pos_weight, with models trained on patients chb01 and chb03 and tested
+    on held-out patient chb05. The Baseline Random Forest with decision threshold
+    tuning at 0.40 achieved the best F1-score of 0.835 (Precision: 0.956,
+    Recall: 0.741), outperforming all resampling approaches.
+  </p>
+
+  <p class="abstract-para">
+    <span class="abstract-bold">Keywords&mdash;</span><span
+    class="kw-italic">EEG, epileptic seizure detection, class imbalance, SMOTE,
+    Random Forest, XGBoost, principal component analysis, CHB-MIT, threshold
+    tuning</span>
+  </p>
+
+  <!-- I. INTRODUCTION -->
+  <div class="sec-heading">I.&nbsp; Introduction</div>
+
+  <p class="bp">Epilepsy ranks among the most prevalent chronic neurological
+  disorders worldwide, affecting more than 50 million individuals across all age
+  groups [1]. The condition is defined by recurrent, unprovoked seizures arising
+  from abnormal electrical discharges in the brain. Despite advances in
+  antiepileptic medications, approximately one-third of patients remain
+  pharmacologically refractory, making continuous monitoring and reliable
+  seizure detection an ongoing clinical priority [2].</p>
+
+  <p class="bp">Electroencephalography (EEG) is the established gold standard
+  for characterising brain electrical activity and forms the primary modality
+  for clinical seizure identification. However, manual interpretation of
+  long-term EEG recordings is time-consuming, subjective, and dependent on
+  trained neurologists&mdash;limitations that motivate the development of
+  automated, machine learning-based detection systems [3].</p>
+
+  <p class="bp">A fundamental challenge is the severe class imbalance inherent
+  in continuous EEG data. Seizure events typically account for less than 2% of
+  total recording time, producing imbalance ratios exceeding 80:1. Standard
+  classifiers are biased toward the majority class, producing high overall
+  accuracy but critically insufficient seizure sensitivity. This paper
+  systematically compares five class imbalance handling strategies within a
+  unified pipeline, with additional investigation of decision threshold tuning
+  as a practical post-processing optimisation.</p>
+
+  <!-- II. RELATED WORK -->
+  <div class="sec-heading">II.&nbsp; Related Work</div>
+
+  <p class="bp">Shoeb and Guttag [4] introduced the CHB-MIT Scalp EEG Database
+  and proposed a patient-specific SVM-based seizure detector, establishing a
+  widely used benchmark. Subasi and Gursoy [5] demonstrated that PCA-compressed
+  statistical EEG features with SVM yield competitive inter-patient performance.
+  Statistical features including mean, variance, skewness, kurtosis, and RMS
+  have consistently proven discriminative for seizure classification [6].</p>
+
+  <p class="bp">Chawla et al. [7] introduced SMOTE, which generates synthetic
+  minority samples by linear interpolation; however, its default 1:1 resampling
+  ratio can be too aggressive for extreme imbalances, collapsing classifier
+  precision. Lema&icirc;tre et al. [8] developed the imbalanced-learn library
+  providing Balanced Random Forest and SMOTETomek implementations. Chen and
+  Guestrin [9] introduced XGBoost, whose scale_pos_weight parameter encodes
+  imbalance directly into the gradient boosting objective. He and Garcia [10]
+  provide a comprehensive review noting no single technique dominates across
+  all domains.</p>
+
+  <p class="bp">Despite individual evaluations in biomedical contexts, a unified
+  comparative study targeting EEG seizure detection under a cross-patient
+  protocol remains limited. This work fills that gap through a comprehensive
+  evaluation within a consistent experimental pipeline.</p>
+
+  <!-- III. DATASET AND METHODOLOGY -->
+  <div class="sec-heading">III.&nbsp; Dataset and Methodology</div>
+
+  <div class="sub-heading">A.&nbsp; Dataset</div>
+  <p class="bp">The CHB-MIT Scalp EEG Database [4] comprises long-term scalp
+  EEG recordings from 22 paediatric subjects at Children&rsquo;s Hospital
+  Boston, with 23 channels sampled at 256&thinsp;Hz and expert-annotated
+  seizure times. Patients chb01 and chb03 form the training set; patient chb05
+  is the held-out test set, simulating cross-patient generalisation. The
+  training class imbalance ratio is 96.4:1.</p>
+
+  <div class="sub-heading">B.&nbsp; Preprocessing and Feature Extraction</div>
+  <p class="bp">EEG recordings are segmented into non-overlapping 2-second
+  windows. For each window and each of the 23 channels, eight statistical
+  features are computed: mean, variance, root mean square (RMS), skewness,
+  kurtosis, maximum, minimum, and band power, yielding a 184-dimensional
+  (23&times;8) feature vector per window. Features are normalised using
+  StandardScaler. PCA retaining 120 components is applied, fitted exclusively
+  on training data to prevent leakage into the test set.</p>
+
+  <div class="sub-heading">C.&nbsp; Class Imbalance Handling Techniques</div>
+  <p class="bp">Five strategies are evaluated: (1)&nbsp;Baseline Random Forest
+  (300 estimators, max depth 12) with no correction; (2)&nbsp;SMOTE with
+  sampling_strategy=0.3, raising the minority class to 30% of the majority
+  rather than the default 1:1; (3)&nbsp;Balanced Random Forest, undersampling
+  the majority class within each bootstrap draw; (4)&nbsp;SMOTETomek, combining
+  SMOTE oversampling with Tomek Links removal of borderline majority samples;
+  and (5)&nbsp;XGBoost with scale_pos_weight set to 96.4.</p>
+
+  <div class="sub-heading">D.&nbsp; Decision Threshold Tuning</div>
+  <p class="bp">For the best-performing model, the classification threshold is
+  varied from 0.10 to 0.50. Lowering the threshold increases seizure recall at
+  the cost of some precision&mdash;a clinically relevant tradeoff since missed
+  seizures carry greater risk than false alarms. This is computationally
+  inexpensive and requires no model retraining.</p>
+
+  <!-- IV. RESULTS AND DISCUSSION -->
+  <div class="sec-heading">IV.&nbsp; Results and Discussion</div>
+
+  <div class="sub-heading">A.&nbsp; Technique Comparison</div>
+  <p class="bp">TABLE&nbsp;I presents seizure-class precision, recall, and
+  F1-score for all five techniques evaluated on patient chb05. The Baseline RF
+  achieves perfect precision (1.000) but lowest recall (0.638). SMOTE and
+  SMOTETomek both raise recall to 0.828 but reduce precision to 0.632. Balanced
+  RF achieves the highest recall (0.966) at extreme precision cost (0.149),
+  yielding F1=0.259&mdash;clinically unsuitable. XGBoost achieves recall 0.862
+  and F1 0.671. The Baseline RF attains the best overall F1 of 0.779.</p>
+
+  <div class="tbl-wrap">
+    <div class="tbl-cap">TABLE I</div>
+    <div class="tbl-cap">Seizure Class Performance Comparison</div>
+    <table class="rt">
+      <thead>
+        <tr><th>Technique</th><th>Precision</th><th>Recall</th><th>F1-Score</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Baseline RF</td><td>1.000</td><td>0.638</td><td>0.779</td></tr>
+        <tr><td>SMOTE + RF</td><td>0.632</td><td>0.828</td><td>0.716</td></tr>
+        <tr><td>Balanced RF</td><td>0.149</td><td>0.966</td><td>0.259</td></tr>
+        <tr><td>SMOTETomek + RF</td><td>0.632</td><td>0.828</td><td>0.716</td></tr>
+        <tr><td>XGBoost (SPW)</td><td>0.549</td><td>0.862</td><td>0.671</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-heading">B.&nbsp; Threshold Tuning Analysis</div>
+  <p class="bp">TABLE&nbsp;II shows threshold tuning results on the Baseline RF.
+  Reducing the threshold from 0.50 to 0.40 raises F1 from 0.779 to 0.835, with
+  precision remaining high at 0.956 and recall improving to 0.741. At threshold
+  0.30, both precision (0.817) and recall (0.845) exceed 0.80&mdash;the most
+  balanced clinical operating point. These results confirm threshold tuning as a
+  powerful complement to resampling strategies.</p>
+
+  <div class="tbl-wrap">
+    <div class="tbl-cap">TABLE II</div>
+    <div class="tbl-cap">Threshold Tuning on Baseline Random Forest</div>
+    <table class="rt">
+      <thead>
+        <tr><th>Threshold</th><th>Precision</th><th>Recall</th><th>F1-Score</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0.50</td><td>1.000</td><td>0.638</td><td>0.779</td></tr>
+        <tr><td>0.40</td><td>0.956</td><td>0.741</td><td><b>0.835</b></td></tr>
+        <tr><td>0.30</td><td>0.817</td><td>0.845</td><td>0.831</td></tr>
+        <tr><td>0.20</td><td>0.531</td><td>0.897</td><td>0.667</td></tr>
+        <tr><td>0.15</td><td>0.419</td><td>0.931</td><td>0.578</td></tr>
+        <tr><td>0.10</td><td>0.300</td><td>0.931</td><td>0.454</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- V. CONCLUSION -->
+  <div class="sec-heading">V.&nbsp; Conclusion</div>
+
+  <p class="bp">This paper presented a systematic comparison of five class
+  imbalance handling techniques for EEG-based epileptic seizure detection using
+  the CHB-MIT dataset under a cross-patient evaluation protocol. The Baseline
+  Random Forest with threshold tuning at 0.40 achieved the best F1-score of
+  0.835 (Precision: 0.956, Recall: 0.741), outperforming all evaluated
+  resampling strategies. Among imbalance methods, SMOTE with a controlled 0.3
+  sampling ratio and SMOTETomek offered the best recall improvement with
+  acceptable precision.</p>
+
+  <p class="bp">Two practical conclusions emerge: (i)&nbsp;default 1:1 SMOTE
+  resampling is detrimental for extreme imbalance ratios exceeding 80:1; and
+  (ii)&nbsp;decision threshold tuning on a well-calibrated model outperforms
+  complex oversampling pipelines at no additional training cost. Future work
+  will extend evaluation to additional CHB-MIT patients, investigate deep
+  learning with focal loss, and explore patient-adaptive threshold selection.</p>
+
+  <!-- ACKNOWLEDGMENT -->
+  <div class="sec-heading">Acknowledgment</div>
+  <p class="bp">The authors thank Children&rsquo;s Hospital Boston and MIT for
+  making the CHB-MIT Scalp EEG Database publicly available through PhysioNet.</p>
+
+  <!-- REFERENCES -->
+  <div class="ref-heading">References</div>
+  <p class="ref">[1]&nbsp; World Health Organization, &ldquo;Epilepsy: Key facts,&rdquo; WHO Fact Sheet, Feb. 2023.</p>
+  <p class="ref">[2]&nbsp; P. Kwan and M. J. Brodie, &ldquo;Early identification of refractory epilepsy,&rdquo; <i>New England Journal of Medicine</i>, vol. 342, no. 5, pp. 314&ndash;319, 2000.</p>
+  <p class="ref">[3]&nbsp; S. Ramgopal et al., &ldquo;Seizure detection, seizure prediction, and closed-loop warning systems in epilepsy,&rdquo; <i>Epilepsy &amp; Behavior</i>, vol. 37, pp. 291&ndash;307, 2014.</p>
+  <p class="ref">[4]&nbsp; A. H. Shoeb and J. V. Guttag, &ldquo;Application of machine learning to epileptic seizure detection,&rdquo; in <i>Proc. 27th ICML</i>, 2010, pp. 975&ndash;982.</p>
+  <p class="ref">[5]&nbsp; A. Subasi and M. I. Gursoy, &ldquo;EEG signal classification using PCA, ICA, LDA and support vector machines,&rdquo; <i>Expert Syst. Appl.</i>, vol. 37, pp. 8659&ndash;8666, 2010.</p>
+  <p class="ref">[6]&nbsp; U. R. Acharya et al., &ldquo;Automated EEG analysis of epilepsy: A review,&rdquo; <i>Knowl.-Based Syst.</i>, vol. 45, pp. 147&ndash;165, 2013.</p>
+  <p class="ref">[7]&nbsp; N. V. Chawla et al., &ldquo;SMOTE: Synthetic minority over-sampling technique,&rdquo; <i>J. Artif. Intell. Res.</i>, vol. 16, pp. 321&ndash;357, 2002.</p>
+  <p class="ref">[8]&nbsp; G. Lema&icirc;tre et al., &ldquo;Imbalanced-learn: A Python toolbox,&rdquo; <i>J. Mach. Learn. Res.</i>, vol. 18, no. 17, pp. 1&ndash;5, 2017.</p>
+  <p class="ref">[9]&nbsp; T. Chen and C. Guestrin, &ldquo;XGBoost: A scalable tree boosting system,&rdquo; in <i>Proc. 22nd ACM SIGKDD</i>, 2016, pp. 785&ndash;794.</p>
+  <p class="ref">[10] H. He and E. A. Garcia, &ldquo;Learning from imbalanced data,&rdquo; <i>IEEE Trans. Knowl. Data Eng.</i>, vol. 21, no. 9, pp. 1263&ndash;1284, 2009.</p>
+
+</div><!-- end body-columns -->
+</body>
+</html>

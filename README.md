@@ -34,9 +34,17 @@ Soha Chand
 
 "Epileptic Seizure Detection Using Machine Learning: A Comparative Study of Class Imbalance Handling Techniques" – Soha Chand, Atharv Dixit, Dr. Hima Deepthi Vankayalapati (MPSTME, SVKM's NMIMS).
 
-- `paper/` – camera-ready version (PDF and DOCX).
-- `code/seizure_MULTI_PATIENT_22.ipynb` – leave-one-patient-out evaluation over 22 CHB-MIT patients (Baseline RF, SMOTE+RF, Balanced RF, XGBoost) and CHB-MIT → Siena test.
-- `code/improve_cell_6.py` – per-patient normalisation, context features, temporal smoothing, event-level evaluation, alarm post-processing.
-- `code/improve_cell_7.py` – baseline-period normalisation variant (30-minute seizure-free baseline).
+### Repository layout
+
+| Folder | Contents |
+|---|---|
+| `paper/final/` | **Final** camera-ready paper (v10, PDF + DOCX) and the response to reviewers |
+| `new_final_code/` | **Current** code behind the final paper: `seizure_MULTI_PATIENT_22.ipynb` (22-patient leave-one-patient-out on CHB-MIT, CHB-MIT to Siena test), `improve_cell_6.py` (per-patient normalisation, context, smoothing, event-level evaluation, alarm post-processing), `improve_cell_7.py` (baseline-period normalisation variant) |
+| `old/notebooks/` | **Old** notebooks: earlier two-patient study versions (chb01, chb03 train; chb05 test) and intermediate experiments |
+| `old/scripts/` | **Old** helper scripts |
+| `old/paper_versions/` | **Old** paper drafts and earlier camera-ready versions (v2 to v9) |
+| `old/figures/` | **Old** figure images |
+
+Note: the two-patient results in the paper (seed analysis, threshold study, PCA ablation, deep-learning baselines) come from the notebooks in `old/notebooks/`.
 
 Data: CHB-MIT and Siena Scalp EEG databases from PhysioNet (not included).
